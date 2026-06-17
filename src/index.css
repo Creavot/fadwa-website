@@ -5,12 +5,12 @@
 }
 
 :root {
-  --black: #0a0a0a;
+  --black: #0c0d12;
   --white: #f5f4f0;
   --accent: #c8a96e;
   --gray: #6b6b6b;
   --light-gray: #e8e7e3;
-  --card-bg: #141414;
+  --card-bg: #13141a;
   --font: 'Georgia', serif;
   --mono: 'Courier New', monospace;
 }
