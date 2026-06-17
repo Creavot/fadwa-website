@@ -25,8 +25,8 @@ function Hero() {
               I'll install it.
             </h1>
             <p className="hero-sub">
-              I help coaches and consultants implement AI strategically — starting with a 2-hour session
-              that gives your entire business a memory, a system, and a direction.
+              I help coaches and consultants stop drowning in manual work and start running on intelligent systems.
+              One 2-hour session gives your entire business a memory, a structure, and a direction.
             </p>
             <div className="hero-ctas">
               <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
@@ -87,9 +87,9 @@ function Problem() {
 
 function AIOSSetup() {
   const deliverables = [
-    'A centralized AI knowledge base for your business',
-    'Your top 3 automation opportunities identified and prioritized',
-    'A clear map of what to build next — and what to leave alone',
+    'A centralized AI knowledge base built around your specific business',
+    'Your top 3 automation opportunities identified, ranked, and explained',
+    'A clear map of what to build next, and what to leave alone',
     'Full ownership of the system. You run it. No dependency on me.',
   ]
 
@@ -103,8 +103,8 @@ function AIOSSetup() {
             <p className="aios-body">
               A focused 2-hour working session where I install an AI brain inside your business.
               By the end, your priorities, your client base, your voice, your offers, and your
-              operations are all documented, connected, and queryable. You ask it a question, it
-              knows your business.
+              operations are all documented, connected, and queryable.
+              You ask it a question. It knows your business.
             </p>
             <p className="aios-label">What you walk away with:</p>
             <ul className="aios-list">
@@ -131,7 +131,7 @@ function Services() {
       featured: true,
       title: 'AI Business Setup',
       tag: 'Start here',
-      body: 'The entry point. 2-hour session, AI brain installed, priorities mapped. You leave with full ownership of the system.',
+      body: 'The entry point. One 2-hour session. Your AI brain is installed, your top priorities are mapped, and you leave with a system you own completely.',
       cta: 'Book a session',
       link: CALENDLY_LINK,
     },
@@ -139,7 +139,7 @@ function Services() {
       featured: false,
       title: 'Fractional Head of AI',
       tag: 'Ongoing',
-      body: 'I come in as your AI director — making decisions, overseeing builds, keeping your AI implementation aligned with your business goals.',
+      body: 'I come in as your AI director, making decisions, overseeing builds, keeping your AI implementation aligned with your business goals. Strategy, not just execution.',
       cta: "Let's talk",
       link: '#contact',
     },
@@ -194,7 +194,7 @@ function HowItWorks() {
     {
       step: '3',
       title: 'Build',
-      body: 'I build what matters. Clean, tested, production-ready — not a demo that breaks in week 2.',
+      body: 'I build what matters. Clean, tested, production-ready. Not a demo that collapses in week 2.',
     },
     {
       step: '4',
@@ -225,7 +225,7 @@ function Portfolio() {
   const work = [
     {
       tag: 'Sample Audit',
-      title: 'AI Business Audit — Coaching Practice',
+      title: 'AI Business Audit: Coaching Practice',
       context: 'Fictional coaching business, 5 clients/month',
       outcome: 'Identified 3 automatable processes, 6h/week saved, clear build roadmap',
       link: '#',
@@ -246,7 +246,7 @@ function Portfolio() {
     },
     {
       tag: 'Walkthrough',
-      title: 'AIOS Setup — Full Walkthrough',
+      title: 'AIOS Setup: Full Walkthrough',
       context: 'What a client receives after a setup session',
       outcome: 'Live Notion workspace, automation map, day-to-day usage demo',
       link: '#',
@@ -288,22 +288,22 @@ function About() {
             <p className="section-eyebrow">Who I am</p>
             <h2 className="about-headline">I didn't start as the tech person in the room.</h2>
             <p>
-              I spent years on the business side — coaching entrepreneurs, managing marketing
+              I spent years on the business side. Coaching entrepreneurs, managing marketing
               operations, training teams, building brands. I know what it feels like to run a
               business where everything lives in your head and the system breaks the moment you
               step away.
             </p>
             <p>
-              That's where my real edge is. Not in code. In understanding the business first.
+              That is where my real edge is. Not in code. In understanding the business first,
+              before touching any tool.
             </p>
             <p>
               Most people implementing AI come from the technical side. They know the tools but
-              not the business. I came from the other direction. I know the business — and I
+              not the business. I came from the other direction. I know the business. And I
               learned to build the tools.
             </p>
             <p className="about-location">
-              Based in Agadir, Morocco. Working with coaches and consultants in MENA and Europe.
-              Arabic · French · English.
+              Working with coaches and consultants worldwide. Arabic, French, and English.
             </p>
             <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
               Book your AI Business Setup →
@@ -335,7 +335,7 @@ function Contact() {
   return (
     <section className="section contact" id="contact">
       <div className="container">
-        <h2 className="section-headline">Get in touch</h2>
+        <h2 className="section-headline">Ready to give your business an AI brain?</h2>
         <div className="contact-inner">
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
@@ -372,7 +372,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <p className="footer-name">Fadwa Naboulssi · Fractional Head of AI · Agadir, Morocco</p>
+        <p className="footer-name">Fadwa Naboulssi · Fractional Head of AI</p>
         <div className="footer-links">
           <a href="https://www.linkedin.com/in/fadwa-naboulssi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="mailto:coach.fadwa.naboulssi@gmail.com">Email</a>
