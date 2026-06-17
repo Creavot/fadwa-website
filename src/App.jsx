@@ -1,6 +1,6 @@
 import './App.css'
 
-const CALENDLY_LINK = 'CALENDLY_LINK_HERE'
+const CALENDLY_LINK = 'https://calendly.com/atypikflow/30min'
 
 function Nav() {
   return (
