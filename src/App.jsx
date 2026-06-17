@@ -7,21 +7,9 @@ const CALENDLY_LINK = 'https://calendly.com/atypikflow/30min'
 function LangToggle({ lang, setLang }) {
   return (
     <div className="lang-toggle" role="group" aria-label="Language">
-      <button
-        className={`lang-btn ${lang === 'en' ? 'lang-btn--active' : ''}`}
-        onClick={() => setLang('en')}
-        aria-pressed={lang === 'en'}
-      >
-        EN
-      </button>
+      <button className={`lang-btn ${lang === 'en' ? 'lang-btn--active' : ''}`} onClick={() => setLang('en')} aria-pressed={lang === 'en'}>EN</button>
       <span className="lang-divider" aria-hidden="true">|</span>
-      <button
-        className={`lang-btn ${lang === 'fr' ? 'lang-btn--active' : ''}`}
-        onClick={() => setLang('fr')}
-        aria-pressed={lang === 'fr'}
-      >
-        FR
-      </button>
+      <button className={`lang-btn ${lang === 'fr' ? 'lang-btn--active' : ''}`} onClick={() => setLang('fr')} aria-pressed={lang === 'fr'}>FR</button>
     </div>
   )
 }
@@ -35,9 +23,7 @@ function Nav({ t, lang, setLang }) {
       </div>
       <div className="nav-right">
         <LangToggle lang={lang} setLang={setLang} />
-        <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-small">
-          {t.nav.cta}
-        </a>
+        <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-small">{t.nav.cta}</a>
       </div>
     </nav>
   )
@@ -46,6 +32,7 @@ function Nav({ t, lang, setLang }) {
 function Hero({ t }) {
   return (
     <section className="hero" id="hero">
+      <div className="hero-glow" aria-hidden="true" />
       <div className="container">
         <div className="hero-inner">
           <div className="hero-text">
@@ -56,16 +43,12 @@ function Hero({ t }) {
             </h1>
             <p className="hero-sub">{t.hero.sub}</p>
             <div className="hero-ctas">
-              <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                {t.hero.ctaPrimary}
-              </a>
-              <a href="#how-it-works" className="btn btn-ghost">
-                {t.hero.ctaSecondary}
-              </a>
+              <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-shimmer">{t.hero.ctaPrimary}</a>
+              <a href="#how-it-works" className="btn btn-ghost">{t.hero.ctaSecondary}</a>
             </div>
           </div>
           <div className="hero-photo">
-            <div className="photo-placeholder">
+            <div className="photo-placeholder photo-float">
               <span>Your photo here</span>
             </div>
           </div>
@@ -79,13 +62,12 @@ function Problem({ t }) {
   return (
     <section className="section problem" id="problem">
       <div className="container">
-        <h2 className="section-headline">
-          {t.problem.headline1}<br />
-          {t.problem.headline2}
+        <h2 className="section-headline" data-animate>
+          {t.problem.headline1}<br />{t.problem.headline2}
         </h2>
         <div className="problem-grid">
-          {t.problem.items.map((p) => (
-            <div className="problem-card" key={p.number}>
+          {t.problem.items.map((p, i) => (
+            <div className="problem-card" key={p.number} data-animate data-delay={i + 1}>
               <span className="problem-number">{p.number}</span>
               <h3 className="problem-title">{p.title}</h3>
               <p className="problem-body">{p.body}</p>
@@ -103,19 +85,19 @@ function AIOSSetup({ t }) {
       <div className="container">
         <div className="aios-inner">
           <div className="aios-text">
-            <p className="section-eyebrow">{t.aios.eyebrow}</p>
-            <h2 className="section-headline">{t.aios.headline}</h2>
-            <p className="aios-body">{t.aios.body}</p>
-            <p className="aios-label">{t.aios.label}</p>
-            <ul className="aios-list">
+            <p className="section-eyebrow" data-animate>{t.aios.eyebrow}</p>
+            <h2 className="section-headline" data-animate data-delay="1">{t.aios.headline}</h2>
+            <p className="aios-body" data-animate data-delay="2">{t.aios.body}</p>
+            <p className="aios-label" data-animate data-delay="3">{t.aios.label}</p>
+            <ul className="aios-list" data-animate data-delay="3">
               {t.aios.deliverables.map((d, i) => (
                 <li key={i}>{d}</li>
               ))}
             </ul>
-            <div className="aios-meta">
+            <div className="aios-meta" data-animate data-delay="4">
               <span>{t.aios.meta}</span>
             </div>
-            <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-shimmer" data-animate data-delay="4">
               {t.aios.cta}
             </a>
           </div>
@@ -129,10 +111,10 @@ function Services({ t }) {
   return (
     <section className="section services" id="services">
       <div className="container">
-        <h2 className="section-headline">{t.services.headline}</h2>
+        <h2 className="section-headline" data-animate>{t.services.headline}</h2>
         <div className="services-grid">
-          {t.services.items.map((s) => (
-            <div className={`service-card ${s.featured ? 'service-card--featured' : ''}`} key={s.title}>
+          {t.services.items.map((s, i) => (
+            <div className={`service-card ${s.featured ? 'service-card--featured' : ''}`} key={s.title} data-animate data-delay={i + 1}>
               <span className="service-tag">{s.tag}</span>
               <h3 className="service-title">{s.title}</h3>
               <p className="service-body">{s.body}</p>
@@ -140,7 +122,7 @@ function Services({ t }) {
                 href={s.link === 'calendly' ? CALENDLY_LINK : s.link}
                 target={s.link === 'calendly' ? '_blank' : '_self'}
                 rel="noopener noreferrer"
-                className={`btn ${s.featured ? 'btn-primary' : 'btn-outline'}`}
+                className={`btn ${s.featured ? 'btn-primary btn-shimmer' : 'btn-outline'}`}
               >
                 {s.cta} →
               </a>
@@ -156,10 +138,10 @@ function HowItWorks({ t }) {
   return (
     <section className="section how" id="how-it-works">
       <div className="container">
-        <h2 className="section-headline">{t.how.headline}</h2>
+        <h2 className="section-headline" data-animate>{t.how.headline}</h2>
         <div className="steps-grid">
-          {t.how.steps.map((s) => (
-            <div className="step" key={s.step}>
+          {t.how.steps.map((s, i) => (
+            <div className="step" key={s.step} data-animate data-delay={i + 1}>
               <span className="step-number">{s.step}</span>
               <h3 className="step-title">{s.title}</h3>
               <p className="step-body">{s.body}</p>
@@ -175,11 +157,11 @@ function Portfolio({ t }) {
   return (
     <section className="section portfolio" id="portfolio">
       <div className="container">
-        <h2 className="section-headline">{t.portfolio.headline}</h2>
-        <p className="section-sub">{t.portfolio.sub}</p>
+        <h2 className="section-headline" data-animate>{t.portfolio.headline}</h2>
+        <p className="section-sub" data-animate data-delay="1">{t.portfolio.sub}</p>
         <div className="portfolio-grid">
-          {t.portfolio.items.map((w) => (
-            <div className="portfolio-card" key={w.title}>
+          {t.portfolio.items.map((w, i) => (
+            <div className="portfolio-card" key={w.title} data-animate data-delay={i + 1}>
               <span className="portfolio-tag">{w.tag}</span>
               <h3 className="portfolio-title">{w.title}</h3>
               <p className="portfolio-context">{w.context}</p>
@@ -199,18 +181,18 @@ function About({ t }) {
       <div className="container">
         <div className="about-inner">
           <div className="about-photo">
-            <div className="photo-placeholder photo-placeholder--small">
+            <div className="photo-placeholder photo-placeholder--small photo-float">
               <span>Photo</span>
             </div>
           </div>
           <div className="about-text">
-            <p className="section-eyebrow">{t.about.eyebrow}</p>
-            <h2 className="about-headline">{t.about.headline}</h2>
-            <p>{t.about.p1}</p>
-            <p>{t.about.p2}</p>
-            <p>{t.about.p3}</p>
-            <p className="about-location">{t.about.location}</p>
-            <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <p className="section-eyebrow" data-animate>{t.about.eyebrow}</p>
+            <h2 className="about-headline" data-animate data-delay="1">{t.about.headline}</h2>
+            <p data-animate data-delay="2">{t.about.p1}</p>
+            <p data-animate data-delay="3">{t.about.p2}</p>
+            <p data-animate data-delay="3">{t.about.p3}</p>
+            <p className="about-location" data-animate data-delay="4">{t.about.location}</p>
+            <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-shimmer" data-animate data-delay="4">
               {t.about.cta}
             </a>
           </div>
@@ -230,18 +212,15 @@ function Contact({ t }) {
       body: data,
       headers: { Accept: 'application/json' },
     })
-      .then(() => {
-        alert(t.contact.success)
-        form.reset()
-      })
+      .then(() => { alert(t.contact.success); form.reset() })
       .catch(() => alert(t.contact.error))
   }
 
   return (
     <section className="section contact" id="contact">
       <div className="container">
-        <h2 className="section-headline">{t.contact.headline}</h2>
-        <div className="contact-inner">
+        <h2 className="section-headline" data-animate>{t.contact.headline}</h2>
+        <div className="contact-inner" data-animate data-delay="1">
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">{t.contact.name.label}</label>
@@ -264,7 +243,7 @@ function Contact({ t }) {
                 ))}
               </select>
             </div>
-            <button type="submit" className="btn btn-primary">{t.contact.submit}</button>
+            <button type="submit" className="btn btn-primary btn-shimmer">{t.contact.submit}</button>
           </form>
         </div>
       </div>
@@ -292,6 +271,23 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.lang = lang
+  }, [lang])
+
+  useEffect(() => {
+    const els = document.querySelectorAll('[data-animate]')
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible')
+            io.unobserve(e.target)
+          }
+        })
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    )
+    els.forEach(el => io.observe(el))
+    return () => io.disconnect()
   }, [lang])
 
   return (
