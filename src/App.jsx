@@ -29,7 +29,10 @@ function LangToggle({ lang, setLang }) {
 function Nav({ t, lang, setLang }) {
   return (
     <nav className="nav">
-      <span className="nav-logo">Fadwa Naboulssi</span>
+      <div className="nav-logo-block">
+        <span className="nav-logo">Fadwa Naboulssi</span>
+        <span className="nav-tagline">Fractional Head of AI</span>
+      </div>
       <div className="nav-right">
         <LangToggle lang={lang} setLang={setLang} />
         <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-small">
@@ -273,7 +276,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <p className="footer-name">Fadwa Naboulssi · Fractional Head of AI</p>
+        <p className="footer-name">Fadwa Naboulssi · Fractional Head of AI · © 2026 All rights reserved</p>
         <div className="footer-links">
           <a href="https://www.linkedin.com/in/fadwa-naboulssi" target="_blank" rel="noopener noreferrer">LinkedIn</a>
           <a href="mailto:coach.fadwa.naboulssi@gmail.com">Email</a>
