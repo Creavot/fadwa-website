@@ -34,7 +34,7 @@ function Nav({ t, lang, setLang }) {
         </ul>
         <div className="nav-right">
           <LangToggle lang={lang} setLang={setLang} />
-          <a href="/#contact" className="btn btn-small">{t.nav.cta}</a>
+          <a href="mailto:coach.fadwa.naboulssi@gmail.com" className="btn btn-small">{t.nav.cta}</a>
           <button
             className={`nav-hamburger${menuOpen ? ' nav-hamburger--open' : ''}`}
             onClick={() => setMenuOpen((o) => !o)}
@@ -71,7 +71,7 @@ function Hero({ t }) {
             </p>
             <p className="hero-sub">{t.hero.sub}</p>
             <div className="hero-ctas">
-              <a href="#contact" className="btn btn-primary">{t.hero.ctaPrimary}</a>
+              <a href="mailto:coach.fadwa.naboulssi@gmail.com" className="btn btn-primary">{t.hero.ctaPrimary}</a>
               <a href="#how-it-works" className="btn btn-ghost">{t.hero.ctaSecondary}</a>
             </div>
           </div>
@@ -144,7 +144,7 @@ function AIOSSetup({ t }) {
           <div className="aios-meta" data-animate data-delay="4">
             <span>{t.aios.meta}</span>
           </div>
-          <a href="#contact" className="btn btn-primary" data-animate data-delay="4">
+          <a href="mailto:coach.fadwa.naboulssi@gmail.com" className="btn btn-primary" data-animate data-delay="4">
             {t.aios.cta}
           </a>
         </div>
@@ -230,59 +230,10 @@ function About({ t }) {
             <p data-animate data-delay="3">{t.about.p2}</p>
             <p data-animate data-delay="3">{t.about.p3}</p>
             <p className="about-location" data-animate data-delay="4">{t.about.location}</p>
-            <a href="#contact" className="btn btn-primary" data-animate data-delay="4">
+            <a href="mailto:coach.fadwa.naboulssi@gmail.com" className="btn btn-primary" data-animate data-delay="4">
               {t.about.cta}
             </a>
           </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function Contact({ t }) {
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const form = e.target
-    const data = new FormData(form)
-    fetch('https://formspree.io/f/FORMSPREE_ID', {
-      method: 'POST',
-      body: data,
-      headers: { Accept: 'application/json' },
-    })
-      .then(() => { alert(t.contact.success); form.reset() })
-      .catch(() => alert(t.contact.error))
-  }
-
-  return (
-    <section className="section contact" id="contact">
-      <div className="container">
-        <h2 className="section-headline" data-animate>{t.contact.headline}</h2>
-        <div className="contact-inner" data-animate data-delay="1">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name">{t.contact.name.label}</label>
-              <input type="text" id="name" name="name" required placeholder={t.contact.name.placeholder} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">{t.contact.email.label}</label>
-              <input type="email" id="email" name="email" required placeholder={t.contact.email.placeholder} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="business">{t.contact.business.label}</label>
-              <input type="text" id="business" name="business" placeholder={t.contact.business.placeholder} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="interest">{t.contact.interest.label}</label>
-              <select id="interest" name="interest">
-                <option value="">{t.contact.interest.placeholder}</option>
-                {t.contact.interest.options.map((o) => (
-                  <option key={o.value} value={o.value}>{o.label}</option>
-                ))}
-              </select>
-            </div>
-            <button type="submit" className="btn btn-primary">{t.contact.submit}</button>
-          </form>
         </div>
       </div>
     </section>
@@ -336,7 +287,6 @@ function HomePage({ t, lang, setLang }) {
       <Portfolio t={t} />
       <Trust t={t} />
       <About t={t} />
-      <Contact t={t} />
       <Footer />
     </>
   )
@@ -433,7 +383,7 @@ function CaseStudyPage({ t, lang, setLang }) {
 
           <div className="case-study-cta" data-animate data-delay="6">
             <p>{t.caseStudyPage.cta}</p>
-            <a href="/#contact" className="btn btn-primary">
+            <a href="mailto:coach.fadwa.naboulssi@gmail.com" className="btn btn-primary">
               {t.hero.ctaPrimary}
             </a>
           </div>

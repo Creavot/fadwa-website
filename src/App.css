@@ -290,23 +290,6 @@
   border-radius: 4px; box-shadow: 0 12px 40px rgba(0,0,0,0.1);
 }
 
-/* ---- CONTACT ---- */
-.contact { background: var(--bg-alt); }
-.contact-inner { max-width: 560px; }
-.contact-form { display: flex; flex-direction: column; gap: 24px; }
-.form-group { display: flex; flex-direction: column; gap: 8px; }
-.form-group label { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); font-weight: 700; }
-.form-group input, .form-group select {
-  background: var(--white); border: 1px solid var(--border); color: var(--dark);
-  font-family: inherit; font-size: 15px; padding: 12px 16px;
-  border-radius: 3px; outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-}
-.form-group input::placeholder { color: var(--gray); }
-.form-group input:focus, .form-group select:focus {
-  border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,119,34,0.12);
-}
-.form-group select option { background: var(--white); color: var(--dark); }
-
 /* ---- FOOTER ---- */
 .footer { background: var(--footer-bg); padding: 48px 0; }
 .footer .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
@@ -365,7 +348,6 @@
   .section-headline { font-size: 26px; }
   .hero-tagline { font-size: 28px; }
   .aios-inner { max-width: 100%; }
-  .contact-inner { max-width: 100%; }
 }
 
 @media (max-width: 420px) {

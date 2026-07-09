@@ -7,7 +7,6 @@ const translations = {
         { label: 'How it works', href: '#how-it-works' },
         { label: 'Work', href: '#portfolio' },
         { label: 'About', href: '#about' },
-        { label: 'Contact', href: '#contact' },
       ],
     },
     hero: {
@@ -62,7 +61,7 @@ const translations = {
           title: 'AI Business Setup',
           body: 'The entry point. One 2-hour session. Your AI brain is installed, your top priorities are mapped, and you leave with a system you own completely.',
           cta: 'Get started',
-          link: '#contact',
+          link: 'mailto:coach.fadwa.naboulssi@gmail.com',
         },
         {
           featured: false,
@@ -70,7 +69,7 @@ const translations = {
           title: 'Fractional Head of AI',
           body: 'I come in as your AI director, making decisions, overseeing builds, keeping your AI implementation aligned with your business goals. Strategy, not just execution.',
           cta: "Let's talk",
-          link: '#contact',
+          link: 'mailto:coach.fadwa.naboulssi@gmail.com',
         },
         {
           featured: false,
@@ -78,7 +77,7 @@ const translations = {
           title: 'Done-for-You Automation',
           body: 'You have a specific process that needs to be automated. I build it, test it, and hand it off completely ready to use.',
           cta: 'Tell me what you need',
-          link: '#contact',
+          link: 'mailto:coach.fadwa.naboulssi@gmail.com',
         },
       ],
     },
@@ -132,25 +131,6 @@ const translations = {
       underHood: 'Under the hood (technical)',
       cta: 'Want a system like this?',
     },
-    contact: {
-      headline: 'Ready to give your business an AI brain?',
-      name: { label: 'Name', placeholder: 'Your name' },
-      email: { label: 'Email', placeholder: 'your@email.com' },
-      business: { label: 'What does your business do?', placeholder: 'One line is enough' },
-      interest: {
-        label: 'What are you looking for?',
-        placeholder: 'Select one',
-        options: [
-          { value: 'aios', label: 'AI Business Setup' },
-          { value: 'fractional', label: 'Fractional Head of AI' },
-          { value: 'dfy', label: 'Done-for-you automation' },
-          { value: 'unsure', label: 'Not sure yet' },
-        ],
-      },
-      submit: 'Send →',
-      success: "Message sent. I'll be in touch within 24 hours.",
-      error: 'Something went wrong. Email me directly at coach.fadwa.naboulssi@gmail.com',
-    },
   },
   fr: {
     nav: {
@@ -160,7 +140,6 @@ const translations = {
         { label: 'Comment ça marche', href: '#how-it-works' },
         { label: 'Réalisations', href: '#portfolio' },
         { label: 'À propos', href: '#about' },
-        { label: 'Contact', href: '#contact' },
       ],
     },
     hero: {
@@ -215,7 +194,7 @@ const translations = {
           title: 'Setup IA',
           body: "Le point d'entrée. Une session de 2 heures. Votre cerveau IA est installé, vos priorités sont cartographiées, et vous repartez avec un système qui vous appartient entièrement.",
           cta: 'Commencer',
-          link: '#contact',
+          link: 'mailto:coach.fadwa.naboulssi@gmail.com',
         },
         {
           featured: false,
@@ -223,7 +202,7 @@ const translations = {
           title: 'Fractional Head of AI',
           body: "J'interviens comme votre directeur IA. Je prends les décisions, supervise les développements et maintiens votre stratégie alignée avec vos objectifs business. Stratégie, pas seulement exécution.",
           cta: 'Parlons-en',
-          link: '#contact',
+          link: 'mailto:coach.fadwa.naboulssi@gmail.com',
         },
         {
           featured: false,
@@ -231,7 +210,7 @@ const translations = {
           title: 'Automatisation Clé en Main',
           body: "Vous avez un processus précis à automatiser. Je le construis, le teste et vous le livre entièrement prêt à l'emploi.",
           cta: "Dites-moi ce qu'il vous faut",
-          link: '#contact',
+          link: 'mailto:coach.fadwa.naboulssi@gmail.com',
         },
       ],
     },
@@ -284,25 +263,6 @@ const translations = {
       loom: 'Voir la vidéo de démonstration',
       underHood: 'Sous le capot (technique)',
       cta: 'Envie d\'un système comme celui-ci ?',
-    },
-    contact: {
-      headline: 'Prêt à donner un cerveau IA à votre entreprise ?',
-      name: { label: 'Nom', placeholder: 'Votre nom' },
-      email: { label: 'Email', placeholder: 'votre@email.com' },
-      business: { label: 'Que fait votre entreprise ?', placeholder: 'Une ligne suffit' },
-      interest: {
-        label: 'Que recherchez-vous ?',
-        placeholder: 'Choisir',
-        options: [
-          { value: 'aios', label: 'Setup IA' },
-          { value: 'fractional', label: 'Fractional Head of AI' },
-          { value: 'dfy', label: 'Automatisation clé en main' },
-          { value: 'unsure', label: 'Pas encore sûr' },
-        ],
-      },
-      submit: 'Envoyer →',
-      success: 'Message envoyé. Je vous répondrai dans les 24 heures.',
-      error: 'Une erreur est survenue. Contactez-moi à coach.fadwa.naboulssi@gmail.com',
     },
   },
 }
