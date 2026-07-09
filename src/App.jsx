@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
+import { Routes, Route, Link, useParams, useNavigate } from 'react-router-dom'
 import './App.css'
 import translations from './translations'
-
-const CALENDLY_LINK = 'https://calendly.com/atypikflow/30min'
+import caseStudies from './caseStudies'
 
 function LangToggle({ lang, setLang }) {
   return (
@@ -15,16 +15,45 @@ function LangToggle({ lang, setLang }) {
 }
 
 function Nav({ t, lang, setLang }) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const handleLinkClick = () => setMenuOpen(false)
+
   return (
-    <nav className="nav">
-      <div className="nav-logo-block">
-        <span className="nav-logo">Fadwa Naboulssi</span>
-        <span className="nav-tagline">Fractional Head of AI</span>
+    <nav className={`nav${menuOpen ? ' nav--open' : ''}`}>
+      <div className="nav-top">
+        <a href="/#hero" className="nav-logo-block">
+          <span className="nav-logo">Fadwa Naboulssi</span>
+          <span className="nav-tagline">Fractional Head of AI</span>
+        </a>
+        <ul className="nav-links">
+          {t.nav.links.map((l) => (
+            <li key={l.href}>
+              <a href={`/${l.href}`} className="nav-link">{l.label}</a>
+            </li>
+          ))}
+        </ul>
+        <div className="nav-right">
+          <LangToggle lang={lang} setLang={setLang} />
+          <a href="/#contact" className="btn btn-small">{t.nav.cta}</a>
+          <button
+            className={`nav-hamburger${menuOpen ? ' nav-hamburger--open' : ''}`}
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span /><span /><span />
+          </button>
+        </div>
       </div>
-      <div className="nav-right">
-        <LangToggle lang={lang} setLang={setLang} />
-        <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-small">{t.nav.cta}</a>
-      </div>
+      {menuOpen && (
+        <ul className="nav-mobile-links">
+          {t.nav.links.map((l) => (
+            <li key={l.href}>
+              <a href={`/${l.href}`} className="nav-mobile-link" onClick={handleLinkClick}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   )
 }
@@ -32,25 +61,22 @@ function Nav({ t, lang, setLang }) {
 function Hero({ t }) {
   return (
     <section className="hero" id="hero">
-      <div className="hero-glow" aria-hidden="true" />
       <div className="container">
         <div className="hero-inner">
           <div className="hero-text">
             <p className="hero-eyebrow">{t.hero.eyebrow}</p>
-            <h1 className="hero-headline">
-              {t.hero.headline1}<br />
-              {t.hero.headline2}
-            </h1>
+            <p className="hero-tagline">
+              {t.hero.tagline1}<br />
+              {t.hero.tagline2}
+            </p>
             <p className="hero-sub">{t.hero.sub}</p>
             <div className="hero-ctas">
-              <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-shimmer">{t.hero.ctaPrimary}</a>
+              <a href="#contact" className="btn btn-primary">{t.hero.ctaPrimary}</a>
               <a href="#how-it-works" className="btn btn-ghost">{t.hero.ctaSecondary}</a>
             </div>
           </div>
           <div className="hero-photo">
-            <div className="photo-placeholder photo-float">
-              <span>Your photo here</span>
-            </div>
+            <img src="/fadwa.png" alt="Fadwa Naboulssi" className="hero-photo-img" />
           </div>
         </div>
       </div>
@@ -79,34 +105,6 @@ function Problem({ t }) {
   )
 }
 
-function AIOSSetup({ t }) {
-  return (
-    <section className="section aios" id="aios">
-      <div className="container">
-        <div className="aios-inner">
-          <div className="aios-text">
-            <p className="section-eyebrow" data-animate>{t.aios.eyebrow}</p>
-            <h2 className="section-headline" data-animate data-delay="1">{t.aios.headline}</h2>
-            <p className="aios-body" data-animate data-delay="2">{t.aios.body}</p>
-            <p className="aios-label" data-animate data-delay="3">{t.aios.label}</p>
-            <ul className="aios-list" data-animate data-delay="3">
-              {t.aios.deliverables.map((d, i) => (
-                <li key={i}>{d}</li>
-              ))}
-            </ul>
-            <div className="aios-meta" data-animate data-delay="4">
-              <span>{t.aios.meta}</span>
-            </div>
-            <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-shimmer" data-animate data-delay="4">
-              {t.aios.cta}
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 function Services({ t }) {
   return (
     <section className="section services" id="services">
@@ -118,16 +116,37 @@ function Services({ t }) {
               <span className="service-tag">{s.tag}</span>
               <h3 className="service-title">{s.title}</h3>
               <p className="service-body">{s.body}</p>
-              <a
-                href={s.link === 'calendly' ? CALENDLY_LINK : s.link}
-                target={s.link === 'calendly' ? '_blank' : '_self'}
-                rel="noopener noreferrer"
-                className={`btn ${s.featured ? 'btn-primary btn-shimmer' : 'btn-outline'}`}
-              >
-                {s.cta} →
+              <a href={s.link} className="btn btn-outline">
+                VIEW
               </a>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function AIOSSetup({ t }) {
+  return (
+    <section className="section aios" id="aios">
+      <div className="container">
+        <div className="aios-inner">
+          <p className="section-eyebrow" data-animate>{t.aios.eyebrow}</p>
+          <h2 className="section-headline" data-animate data-delay="1">{t.aios.headline}</h2>
+          <p className="aios-body" data-animate data-delay="2">{t.aios.body}</p>
+          <p className="aios-label" data-animate data-delay="3">{t.aios.label}</p>
+          <ul className="aios-list" data-animate data-delay="3">
+            {t.aios.deliverables.map((d, i) => (
+              <li key={i}>{d}</li>
+            ))}
+          </ul>
+          <div className="aios-meta" data-animate data-delay="4">
+            <span>{t.aios.meta}</span>
+          </div>
+          <a href="#contact" className="btn btn-primary" data-animate data-delay="4">
+            {t.aios.cta}
+          </a>
         </div>
       </div>
     </section>
@@ -166,7 +185,26 @@ function Portfolio({ t }) {
               <h3 className="portfolio-title">{w.title}</h3>
               <p className="portfolio-context">{w.context}</p>
               <p className="portfolio-outcome">{w.outcome}</p>
-              <a href="#" className="portfolio-link">{t.portfolio.cta}</a>
+              <Link to={`/case-studies/${w.slug}`} className="portfolio-link">{t.portfolio.cta}</Link>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Trust({ t }) {
+  return (
+    <section className="section trust" id="trust">
+      <div className="container">
+        <h2 className="section-headline" data-animate>{t.trust.headline}</h2>
+        <div className="trust-grid">
+          {t.trust.items.map((item, i) => (
+            <div className="trust-item" key={item.number} data-animate data-delay={i + 1}>
+              <span className="trust-number">{item.number}</span>
+              <h3 className="trust-title">{item.title}</h3>
+              <p className="trust-body">{item.body}</p>
             </div>
           ))}
         </div>
@@ -181,18 +219,18 @@ function About({ t }) {
       <div className="container">
         <div className="about-inner">
           <div className="about-photo">
-            <div className="photo-placeholder photo-placeholder--small photo-float">
-              <span>Photo</span>
-            </div>
+            <img src="/fadwa.png" alt="Fadwa Naboulssi" className="about-photo-img" />
           </div>
-          <div className="about-text">
+          <div className="about-eyebrow-wrap">
             <p className="section-eyebrow" data-animate>{t.about.eyebrow}</p>
+          </div>
+          <div className="about-text-body">
             <h2 className="about-headline" data-animate data-delay="1">{t.about.headline}</h2>
             <p data-animate data-delay="2">{t.about.p1}</p>
             <p data-animate data-delay="3">{t.about.p2}</p>
             <p data-animate data-delay="3">{t.about.p3}</p>
             <p className="about-location" data-animate data-delay="4">{t.about.location}</p>
-            <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-shimmer" data-animate data-delay="4">
+            <a href="#contact" className="btn btn-primary" data-animate data-delay="4">
               {t.about.cta}
             </a>
           </div>
@@ -243,7 +281,7 @@ function Contact({ t }) {
                 ))}
               </select>
             </div>
-            <button type="submit" className="btn btn-primary btn-shimmer">{t.contact.submit}</button>
+            <button type="submit" className="btn btn-primary">{t.contact.submit}</button>
           </form>
         </div>
       </div>
@@ -265,14 +303,7 @@ function Footer() {
   )
 }
 
-export default function App() {
-  const [lang, setLang] = useState('en')
-  const t = translations[lang]
-
-  useEffect(() => {
-    document.documentElement.lang = lang
-  }, [lang])
-
+function useScrollAnimations(deps) {
   useEffect(() => {
     const els = document.querySelectorAll('[data-animate]')
     const io = new IntersectionObserver(
@@ -288,20 +319,143 @@ export default function App() {
     )
     els.forEach(el => io.observe(el))
     return () => io.disconnect()
-  }, [lang])
+  }, deps)
+}
+
+function HomePage({ t, lang, setLang }) {
+  useScrollAnimations([lang])
 
   return (
     <>
       <Nav t={t} lang={lang} setLang={setLang} />
       <Hero t={t} />
       <Problem t={t} />
-      <AIOSSetup t={t} />
       <Services t={t} />
+      <AIOSSetup t={t} />
       <HowItWorks t={t} />
       <Portfolio t={t} />
+      <Trust t={t} />
       <About t={t} />
       <Contact t={t} />
       <Footer />
     </>
+  )
+}
+
+function CaseStudyPage({ t, lang, setLang }) {
+  const { slug } = useParams()
+  const navigate = useNavigate()
+  useScrollAnimations([lang, slug])
+
+  const item = t.portfolio.items.find((w) => w.slug === slug)
+  const detail = caseStudies[slug]
+
+  useEffect(() => {
+    if (!item || !detail) navigate('/', { replace: true })
+  }, [item, detail, navigate])
+
+  if (!item || !detail) return null
+
+  const d = detail[lang]
+
+  return (
+    <>
+      <Nav t={t} lang={lang} setLang={setLang} />
+      <section className="section case-study" id="case-study">
+        <div className="container case-study-inner">
+          <a href="/#portfolio" className="case-study-back">{t.caseStudyPage.back}</a>
+          <span className="portfolio-tag">{item.tag}</span>
+          {detail.illustrative && (
+            <span className="case-study-illustrative">{t.caseStudyPage.illustrative}</span>
+          )}
+          <h1 className="case-study-title" data-animate>{item.title}</h1>
+          <p className="case-study-hook" data-animate data-delay="1">{d.hook}</p>
+
+          <div className="case-study-block" data-animate data-delay="2">
+            <h2 className="case-study-heading">{t.caseStudyPage.whoFor}</h2>
+            {Array.isArray(d.whoFor) ? (
+              <ul className="case-study-whofor">
+                {d.whoFor.map((line, i) => <li key={i}>{line}</li>)}
+              </ul>
+            ) : (
+              <p>{d.whoFor}</p>
+            )}
+          </div>
+
+          <div className="case-study-block" data-animate data-delay="3">
+            <h2 className="case-study-heading">{t.caseStudyPage.problem}</h2>
+            <p>{d.problem}</p>
+          </div>
+
+          <div className="case-study-block" data-animate data-delay="3">
+            <h2 className="case-study-heading">{t.caseStudyPage.whatChanged}</h2>
+            <p>{d.whatChanged}</p>
+          </div>
+
+          <div className="case-study-block case-study-results" data-animate data-delay="4">
+            <h2 className="case-study-heading">{t.caseStudyPage.results}</h2>
+            <ul>
+              {d.results.map((r, i) => <li key={i}>{r}</li>)}
+            </ul>
+          </div>
+
+          {detail.loomUrl && (
+            <div className="case-study-block" data-animate data-delay="4">
+              <h2 className="case-study-heading">{t.caseStudyPage.loom}</h2>
+              <div className="case-study-loom">
+                <iframe
+                  src={`${detail.loomUrl.replace('/share/', '/embed/')}`}
+                  frameBorder="0"
+                  allowFullScreen
+                  title={item.title}
+                />
+              </div>
+            </div>
+          )}
+
+          {detail.screenshots.length > 0 && (
+            <div className="case-study-block" data-animate data-delay="5">
+              <div className="case-study-screenshots">
+                {detail.screenshots.map((s, i) => (
+                  <figure key={s.src}>
+                    <img src={s.src} alt={s.caption[lang]} loading="lazy" />
+                    <figcaption>{s.caption[lang]}</figcaption>
+                  </figure>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div className="case-study-block case-study-underhood" data-animate data-delay="5">
+            <h2 className="case-study-heading">{t.caseStudyPage.underHood}</h2>
+            <p>{d.underHood}</p>
+          </div>
+
+          <div className="case-study-cta" data-animate data-delay="6">
+            <p>{t.caseStudyPage.cta}</p>
+            <a href="/#contact" className="btn btn-primary">
+              {t.hero.ctaPrimary}
+            </a>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
+}
+
+export default function App() {
+  const [lang, setLang] = useState('en')
+  const t = translations[lang]
+
+  useEffect(() => {
+    document.documentElement.lang = lang
+  }, [lang])
+
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage t={t} lang={lang} setLang={setLang} />} />
+      <Route path="/case-studies/:slug" element={<CaseStudyPage t={t} lang={lang} setLang={setLang} />} />
+    </Routes>
   )
 }

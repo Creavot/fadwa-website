@@ -5,14 +5,16 @@
 }
 
 :root {
-  --black: #0c0d12;
-  --white: #f5f4f0;
-  --accent: #c8a96e;
-  --gray: #6b6b6b;
-  --light-gray: #e8e7e3;
-  --card-bg: #13141a;
-  --font: 'Georgia', serif;
-  --mono: 'Courier New', monospace;
+  --orange: #E87722;
+  --orange-dark: #C5601A;
+  --orange-light: #FFF4EB;
+  --dark: #1A1A1A;
+  --body: #3A3A3A;
+  --gray: #888888;
+  --border: #E0E0E0;
+  --bg-alt: #F7F7F7;
+  --white: #FFFFFF;
+  --footer-bg: #111111;
 }
 
 html {
@@ -20,11 +22,12 @@ html {
 }
 
 body {
-  background-color: var(--black);
-  color: var(--white);
-  font-family: var(--font);
-  font-size: 17px;
-  line-height: 1.7;
+  background: var(--white);
+  min-height: 100vh;
+  color: var(--body);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -40,5 +43,5 @@ img {
 
 button {
   cursor: pointer;
-  font-family: var(--font);
+  font-family: inherit;
 }
